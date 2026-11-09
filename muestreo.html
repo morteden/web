@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Zonas de muestreo – MorTeDen</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./images/logo.png" rel="icon" type="image/png">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-12c1ca5e1e2a0c76d5243aafda082cd1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<link href="site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="site_libs/proj4-2.6.2/proj4.min.js"></script>
+<script src="site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="site_libs/leaflet-binding-2.2.3/leaflet.js"></script>
+<script src="site_libs/leaflet-providers-3.0.0/leaflet-providers.js"></script>
+<script src="site_libs/leaflet-providers-plugin-2.2.3/leaflet-providers-plugin.js"></script>
+<link href="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.css" rel="stylesheet">
+<script src="site_libs/leaflet-minimap-3.3.1/Control.MiniMap.min.js"></script>
+<script src="site_libs/leaflet-minimap-3.3.1/Minimap-binding.js"></script>
+<link href="site_libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="site_libs/datatables-binding-0.34.0/datatables.js"></script>
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="site_libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="site_libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="site_libs/nouislider-7.0.10/jquery.nouislider.min.css" rel="stylesheet">
+<script src="site_libs/nouislider-7.0.10/jquery.nouislider.min.js"></script>
+<link href="site_libs/selectize-0.12.0/selectize.bootstrap3.css" rel="stylesheet">
+<script src="site_libs/selectize-0.12.0/selectize.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./images/logo_circulo.png" alt="" class="navbar-logo light-content">
+    <img src="./images/logo_circulo.png" alt="" class="navbar-logo dark-content">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">MorTeDen</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./proyecto.html"> 
+<span class="menu-text">Proyecto</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./muestreo.html" aria-current="page"> 
+<span class="menu-text">Zonas de muestreo</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./resultados.html"> 
+<span class="menu-text">Resultados preliminares</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./equipo.html"> 
+<span class="menu-text">Equipo</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/ajpelu"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#mapa" id="toc-mapa" class="nav-link active" data-scroll-target="#mapa">Mapa</a></li>
+  <li><a href="#listado-de-parcelas" id="toc-listado-de-parcelas" class="nav-link" data-scroll-target="#listado-de-parcelas">Listado de parcelas</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Zonas de muestreo</h1>
+<p class="subtitle lead">Parejas de parcelas <em>Healthy</em> / <em>UNhealthy</em> por especie</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Cada sitio de muestreo es una <strong>pareja de rodales</strong>: uno con decaimiento (<span class="badge-un">UNhealthy</span>, &gt; 75 % de cobertura arbórea y &gt; 50 % de árboles sintomáticos) y otro sin síntomas (<span class="badge-h">Healthy</span>) separado al menos 100 m. En una submuestra de parejas se realizan además vuelos de dron y muestreo dendrocronológico (marcadores de mayor tamaño).</p>
+<div class="stat-row">
+<div class="stat">
+<div class="n">
+8
+</div>
+<div class="l">
+parcelas
+</div>
+</div>
+<div class="stat">
+<div class="n">
+3
+</div>
+<div class="l">
+parejas Healthy / Decline
+</div>
+</div>
+<div class="stat">
+<div class="n">
+4
+</div>
+<div class="l">
+especies de pino
+</div>
+</div>
+<div class="stat">
+<div class="n">
+314
+</div>
+<div class="l">
+árboles muestreados
+</div>
+</div>
+<div class="stat">
+<div class="n">
+5
+</div>
+<div class="l">
+parcelas con vuelo de dron
+</div>
+</div>
+</div>
+<section id="mapa" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="mapa">Mapa</h2>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-page-inset-right">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-a74447a401fc615c29f3" style="width:100%;height:603px;"></div>
+<script type="application/json" data-for="htmlwidget-a74447a401fc615c29f3">{"x":{"options":{"minZoom":8,"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["Esri.WorldImagery",null,"Satélite (Esri)",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addWMSTiles","args":["https://www.ign.es/wms-inspire/pnoa-ma",null,"Ortofoto PNOA (IGN)",{"styles":"","format":"image/jpeg","transparent":false,"version":"1.1.1","attribution":"PNOA © Instituto Geográfico Nacional","layers":"OI.OrthoimageCoverage"}]},{"method":"addProviderTiles","args":["OpenTopoMap",null,"Topográfico",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addProviderTiles","args":["CartoDB.Positron",null,"Claro",{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addPolylines","args":[[[[{"lng":[-3.944322,-3.916161999999999],"lat":[36.88666699999999,36.87568399999999]}]]],null,"Pinus pinaster",{"interactive":true,"className":"","stroke":true,"color":"white","weight":2,"opacity":0.9,"fill":false,"fillColor":"white","fillOpacity":0.2,"dashArray":"5 5","smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addPolylines","args":[[[[{"lng":[-3.938647,-3.9256],"lat":[36.878888,36.879544]}]]],null,"Pinus sylvestris",{"interactive":true,"className":"","stroke":true,"color":"white","weight":2,"opacity":0.9,"fill":false,"fillColor":"white","fillOpacity":0.2,"dashArray":"5 5","smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addPolylines","args":[[[[{"lng":[-3.848418,-3.851817999999999],"lat":[36.780473,36.76996800000001]}]]],null,"Pinus halepensis",{"interactive":true,"className":"","stroke":true,"color":"white","weight":2,"opacity":0.9,"fill":false,"fillColor":"white","fillOpacity":0.2,"dashArray":"5 5","smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[36.780473,36.76996800000001],[-3.848418,-3.851817999999999],[7,7],null,"Pinus halepensis",{"interactive":true,"className":"","stroke":true,"color":["#FFFFFF","#1A1A1A"],"weight":3,"opacity":1,"fill":true,"fillColor":"#C1666B","fillOpacity":0.95},null,null,["<b>NERJAH<\/b> · El Pinarillo, Nerja<br><i>Pinus halepensis<\/i><br>Estado: <b style='color:#006300'>Healthy<\/b> · pareja: NERJAU<br>Muestreo: 02/02/2026<br>Parcela: r = 16 m · 42 árboles<br>Nivel: satélite + dendrocronología","<b>NERJAU<\/b> · El Pinarillo, Nerja<br><i>Pinus halepensis<\/i><br>Estado: <b style='color:NA'>Decline<\/b> · pareja: NERJAH<br>Muestreo: 12/02/2026<br>Parcela: r = 10 m · 37 árboles<br>Nivel: satélite + dendrocronología"],null,["NERJAH · El Pinarillo, Nerja","NERJAU · El Pinarillo, Nerja"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[36.88666699999999,36.87568399999999],[-3.944322,-3.916161999999999],[10,10],null,"Pinus pinaster",{"interactive":true,"className":"","stroke":true,"color":["#FFFFFF","#1A1A1A"],"weight":3,"opacity":1,"fill":true,"fillColor":"#ECB42E","fillOpacity":0.95},null,null,["<b>CARNEH<\/b> · Collado de los Carneros, Cómpeta<br><i>Pinus pinaster<\/i><br>Estado: <b style='color:#006300'>Healthy<\/b> · pareja: CUPARU<br>Muestreo: 30/03/2026<br>Parcela: r = 9 m · 41 árboles<br>Nivel: satélite + dron + dendrocronología","<b>CUPARU<\/b> · Camino Cuesta Parda, Alhama de Granada<br><i>Pinus pinaster<\/i><br>Estado: <b style='color:NA'>Decline<\/b> · pareja: CARNEH<br>Muestreo: 30/05/2026<br>Parcela: r = 8 m · 35 árboles<br>Nivel: satélite + dron + dendrocronología"],null,["CARNEH · Collado de los Carneros, Cómpeta","CUPARU · Camino Cuesta Parda, Alhama de Granada"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[36.877765,-3.938944999999999,10,null,"Pinus nigra",{"interactive":true,"className":"","stroke":true,"color":"#FFFFFF","weight":3,"opacity":1,"fill":true,"fillColor":"#4CBF8B","fillOpacity":0.95},null,null,"<b>TEJAH<\/b> · Fuente de la Teja, Cómpeta<br><i>Pinus nigra<\/i><br>Estado: <b style='color:#006300'>Healthy<\/b><br>Muestreo: 22/02/2026<br>Parcela: r = 12 m · 40 árboles<br>Nivel: satélite + dron + dendrocronología",null,"TEJAH · Fuente de la Teja, Cómpeta",{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addCircleMarkers","args":[[36.878888,36.88104999999999,36.879544],[-3.938647,-3.93649,-3.9256],[10,7,10],null,"Pinus sylvestris",{"interactive":true,"className":"","stroke":true,"color":["#1A1A1A","#1A1A1A","#FFFFFF"],"weight":3,"opacity":1,"fill":true,"fillColor":"#006494","fillOpacity":0.95},null,null,["<b>MELEU<\/b> · Arroyo Cueva del Melero, Cómpeta<br><i>Pinus sylvestris<\/i><br>Estado: <b style='color:NA'>Decline<\/b> · pareja: COMPEH<br>Muestreo: 31/03/2026<br>Parcela: r = 10 m · 45 árboles<br>Nivel: satélite + dron + dendrocronología","<b>MELEUB<\/b> · Arroyo Cueva del Melero, Cómpeta<br><i>Pinus sylvestris<\/i><br>Estado: <b style='color:NA'>Decline<\/b><br>Muestreo: 17/05/2026<br>Parcela: r = 15 m · 40 árboles<br>Nivel: satélite + dendrocronología","<b>COMPEH<\/b> · Puerto de Cómpeta, Canillas de Albaida<br><i>Pinus sylvestris<\/i><br>Estado: <b style='color:#006300'>Healthy<\/b> · pareja: MELEU<br>Muestreo: 30/05/2026<br>Parcela: r = 9 m · 34 árboles<br>Nivel: satélite + dron + dendrocronología"],null,["MELEU · Arroyo Cueva del Melero, Cómpeta","MELEUB · Arroyo Cueva del Melero, Cómpeta","COMPEH · Puerto de Cómpeta, Canillas de Albaida"],{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]},{"method":"addLegend","args":[{"colors":["#C1666B","#ECB42E","#4CBF8B","#006494"],"labels":["<em>Pinus halepensis<\/em>","<em>Pinus pinaster<\/em>","<em>Pinus nigra<\/em>","<em>Pinus sylvestris<\/em>"],"na_color":null,"na_label":"NA","opacity":1,"position":"bottomright","type":"unknown","title":"Especie","extra":null,"layerId":null,"className":"info legend","group":null}]},{"method":"addLegend","args":[{"colors":["#FFFFFF","#1A1A1A"],"labels":["Healthy","Decline"],"na_color":null,"na_label":"NA","opacity":1,"position":"bottomright","type":"unknown","title":"Estado (borde)","extra":null,"layerId":null,"className":"info legend","group":null}]},{"method":"addLayersControl","args":[["Satélite (Esri)","Ortofoto PNOA (IGN)","Topográfico","Claro"],["Pinus halepensis","Pinus pinaster","Pinus nigra","Pinus sylvestris"],{"collapsed":true,"autoZIndex":true,"position":"topright"}]},{"method":"addScaleBar","args":[{"maxWidth":100,"metric":true,"imperial":false,"updateWhenIdle":true,"position":"bottomleft"}]},{"method":"addMiniMap","args":[null,null,"topright",150,150,19,19,-5,false,false,false,true,false,true,{"color":"#ff7800","weight":1,"clickable":false},{"color":"#000000","weight":1,"clickable":false,"opacity":0,"fillOpacity":0},{"hideText":"Hide MiniMap","showText":"Show MiniMap"},[]]}],"limits":{"lat":[36.76996800000001,36.88666699999999],"lng":[-3.944322,-3.848418]},"fitBounds":[36.76996800000001,-3.944322,36.88666699999999,-3.848418,{"padding":[30,30]}]},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="listado-de-parcelas" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="listado-de-parcelas">Listado de parcelas</h2>
+<div class="cell page-columns page-full">
+<div class="cell-output-display column-page-inset-right">
+<div class="datatables html-widget html-fill-item" id="htmlwidget-c84bc2d1db6808eb2857" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-c84bc2d1db6808eb2857">{"x":{"filter":"top","vertical":false,"filterHTML":"<tr>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Pinus halepensis&quot;,&quot;Pinus pinaster&quot;,&quot;Pinus nigra&quot;,&quot;Pinus sylvestris&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"factor\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"width: 100%; display: none;\">\n      <select multiple=\"multiple\" style=\"width: 100%;\" data-options=\"[&quot;Healthy&quot;,&quot;Decline&quot;]\"><\/select>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"character\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"number\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"8\" data-max=\"16\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n  <td data-type=\"integer\" style=\"vertical-align: top;\">\n    <div class=\"form-group has-feedback\" style=\"margin-bottom: auto;\">\n      <input type=\"search\" placeholder=\"All\" class=\"form-control\" style=\"width: 100%;\"/>\n      <span class=\"glyphicon glyphicon-remove-circle form-control-feedback\"><\/span>\n    <\/div>\n    <div style=\"display: none;position: absolute;width: 200px;opacity: 1\">\n      <div data-min=\"34\" data-max=\"45\"><\/div>\n      <span style=\"float: left;\"><\/span>\n      <span style=\"float: right;\"><\/span>\n    <\/div>\n  <\/td>\n<\/tr>","data":[["NERJAH","NERJAU","CARNEH","CUPARU","TEJAH","COMPEH","MELEU","MELEUB"],["El Pinarillo, Nerja","El Pinarillo, Nerja","Collado de los Carneros, Cómpeta","Camino Cuesta Parda, Alhama de Granada","Fuente de la Teja, Cómpeta","Puerto de Cómpeta, Canillas de Albaida","Arroyo Cueva del Melero, Cómpeta","Arroyo Cueva del Melero, Cómpeta"],["Pinus halepensis","Pinus halepensis","Pinus pinaster","Pinus pinaster","Pinus nigra","Pinus sylvestris","Pinus sylvestris","Pinus sylvestris"],["Healthy","Decline","Healthy","Decline","Healthy","Healthy","Decline","Decline"],["NERJAU","NERJAH","CUPARU","CARNEH",null,"MELEU","COMPEH",null],["02/02/2026","12/02/2026","30/03/2026","30/05/2026","22/02/2026","30/05/2026","31/03/2026","17/05/2026"],["satélite + dendrocronología","satélite + dendrocronología","satélite + dron + dendrocronología","satélite + dron + dendrocronología","satélite + dron + dendrocronología","satélite + dron + dendrocronología","satélite + dron + dendrocronología","satélite + dendrocronología"],[16,10,9,8,12,9,10,15],[42,37,41,35,40,34,45,40]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Parcela<\/th>\n      <th>Topónimo<\/th>\n      <th>Especie<\/th>\n      <th>Estado<\/th>\n      <th>Pareja<\/th>\n      <th>Fecha<\/th>\n      <th>Nivel<\/th>\n      <th>Radio (m)<\/th>\n      <th>Nº árboles<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"scrollX":true,"language":{"url":"https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"},"columnDefs":[{"className":"dt-right","targets":[7,8]},{"name":"site","targets":0},{"name":"toponimo","targets":1},{"name":"main_sp","targets":2},{"name":"status","targets":3},{"name":"id_pareja","targets":4},{"name":"fecha","targets":5},{"name":"nivel","targets":6},{"name":"radio_plot","targets":7},{"name":"n_trees","targets":8}],"order":[],"autoWidth":false,"orderClasses":false,"orderCellsTop":true}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p><strong>MorTeDen</strong> · Proyecto financiado por la <a href="https://www.aeet.org">Asociación Española de Ecología Terrestre</a> — Ayudas a Proyectos de Investigación AEET en Ecología 2024</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>Antonio J. Pérez-Luque · ICIFOR (INIA-CSIC)</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

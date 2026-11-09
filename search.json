@@ -1,0 +1,149 @@
+[
+  {
+    "objectID": "resultados.html",
+    "href": "resultados.html",
+    "title": "Resultados preliminares",
+    "section": "",
+    "text": "Los resultados de esta página son preliminares y pueden cambiar a medida que avance el análisis."
+  },
+  {
+    "objectID": "resultados.html#estado-de-las-tareas",
+    "href": "resultados.html#estado-de-las-tareas",
+    "title": "Resultados preliminares",
+    "section": "Estado de las tareas",
+    "text": "Estado de las tareas\n\n\n\n\n\n\n\n\n\n\nTarea\nDescripción\nEstado\n\n\n\n\nT1.1\nSelección de parcelas de teledetección\nPendiente\n\n\nT1.2\nAnálisis de series temporales de índices espectrales\nPendiente\n\n\nT1.3\nGeneración de mapas de probabilidad y aplicación GEE\nPendiente\n\n\nT2.1\nCaracterización espacial de alta precisión con dron\nPendiente\n\n\nT2.2\nAnálisis del crecimiento de árboles sanos y enfermos\nPendiente\n\n\n—\nDivulgación de resultados (Congreso AEET)\nPendiente"
+  },
+  {
+    "objectID": "resultados.html#o1.-identificación-de-decaimiento-mediante-teledetección",
+    "href": "resultados.html#o1.-identificación-de-decaimiento-mediante-teledetección",
+    "title": "Resultados preliminares",
+    "section": "O1. Identificación de decaimiento mediante teledetección",
+    "text": "O1. Identificación de decaimiento mediante teledetección\n\nSeries temporales de índices espectrales\n\n\n\n\n\n\nLas series temporales (NDVI, NBR, CI) de parcelas Healthy y UNhealthy se mostrarán aquí cuando data/series_indices.csv esté disponible.\n\n\n\n\n\nHacia los mapas de probabilidad de decaimiento\n\n\n\n\n\nEjemplo del producto previsto: mapa de probabilidad de decaimiento a partir de umbrales de índices espectrales (p. ej. Spectral index &lt; 0.16 ∩ VImean &lt; 0.2).\n\n\n\n\n\nLos umbrales que mejor discriminen entre parcelas sanas y enfermas se combinarán para generar mapas de probabilidad y una aplicación en Google Earth Engine para identificar hotspots de decaimiento."
+  },
+  {
+    "objectID": "resultados.html#o3.-árboles-sanos-y-enfermos-a-escala-de-árbol",
+    "href": "resultados.html#o3.-árboles-sanos-y-enfermos-a-escala-de-árbol",
+    "title": "Resultados preliminares",
+    "section": "O3. Árboles sanos y enfermos a escala de árbol",
+    "text": "O3. Árboles sanos y enfermos a escala de árbol\n\nCaracterización con dron\n\n\n\n\n\n\nOrtoimagen de falso color.\n\n\n\n\n\n\n\nOrtoimagen NDVI.\n\n\n\n\n\nLas ortoimágenes multiespectrales permiten distinguir a escala de copa árboles enfermos y muertos, base para analizar los patrones espaciales del decaimiento y la productividad primaria del dosel.\n\n\nCrecimiento radial (dendrocronología)\n\n\n\n\n\n\nLas series de crecimiento de árboles sanos y enfermos se mostrarán aquí cuando data/crecimiento_anillos.csv esté disponible."
+  },
+  {
+    "objectID": "resultados.html#formato-de-los-datos",
+    "href": "resultados.html#formato-de-los-datos",
+    "title": "Resultados preliminares",
+    "section": "Formato de los datos",
+    "text": "Formato de los datos\nPara que esta página se actualice automáticamente basta con añadir los ficheros a la carpeta data/ y volver a renderizar:\n\n\n\n\n\n\n\nFichero\nColumnas\n\n\n\n\nestado_tareas.csv\ntarea, descripcion, estado (Completada / En curso / Pendiente)\n\n\nseries_indices.csv\nid_sitio, fecha (AAAA-MM-DD), indice (NDVI, NBR, CI…), valor\n\n\ncrecimiento_anillos.csv\nid_sitio, id_arbol, year, rw (mm)\n\n\n\nid_sitio debe coincidir con el de sitios_muestreo.csv."
+  },
+  {
+    "objectID": "muestreo.html",
+    "href": "muestreo.html",
+    "title": "Zonas de muestreo",
+    "section": "",
+    "text": "Cada sitio de muestreo es una pareja de rodales: uno con decaimiento (UNhealthy, &gt; 75 % de cobertura arbórea y &gt; 50 % de árboles sintomáticos) y otro sin síntomas (Healthy) separado al menos 100 m. En una submuestra de parejas se realizan además vuelos de dron y muestreo dendrocronológico (marcadores de mayor tamaño)."
+  },
+  {
+    "objectID": "muestreo.html#mapa",
+    "href": "muestreo.html#mapa",
+    "title": "Zonas de muestreo",
+    "section": "Mapa",
+    "text": "Mapa"
+  },
+  {
+    "objectID": "muestreo.html#listado-de-parcelas",
+    "href": "muestreo.html#listado-de-parcelas",
+    "title": "Zonas de muestreo",
+    "section": "Listado de parcelas",
+    "text": "Listado de parcelas"
+  },
+  {
+    "objectID": "equipo.html",
+    "href": "equipo.html",
+    "title": "Equipo",
+    "section": "",
+    "text": "Antonio J. Pérez-Luque Instituto de Ciencias Forestales (ICIFOR), INIA-CSIC ORCID 0000-0002-1747-0469 · GitHub"
+  },
+  {
+    "objectID": "equipo.html#investigador-principal",
+    "href": "equipo.html#investigador-principal",
+    "title": "Equipo",
+    "section": "",
+    "text": "Antonio J. Pérez-Luque Instituto de Ciencias Forestales (ICIFOR), INIA-CSIC ORCID 0000-0002-1747-0469 · GitHub"
+  },
+  {
+    "objectID": "equipo.html#colaboraciones",
+    "href": "equipo.html#colaboraciones",
+    "title": "Equipo",
+    "section": "Colaboraciones",
+    "text": "Colaboraciones\n\n\nTeledetección\n\nClemens Mosig (Leipzig University)*\nRocío Hernández-Clemente (Universidad de Córdoba)\nPablo J. Zarco-Tejada (IAS-CSIC)\n\nAplicación Google Earth Engine\n\nJ. Martínez-López (Universidad de Granada)\n\n\n\n\nDendrocronología\n\nGuillermo Gea-Izquierdo (ICIFOR, INIA-CSIC)\nDarío Martín-Benito (ICIFOR, INIA-CSIC)\n\nMicrobiología y suelos\n\nM. Fernández-López (EEZ-CSIC)*\nA. V. Lasa (EEZ-CSIC)*\n\n\n\n* Colaboraciones potenciales."
+  },
+  {
+    "objectID": "equipo.html#transferencia",
+    "href": "equipo.html#transferencia",
+    "title": "Equipo",
+    "section": "Transferencia",
+    "text": "Transferencia\nLos resultados se compartirán con los responsables de la gestión forestal del área de estudio y con la Red Ibérica de Decaimiento Forestal inducido por el Clima (grupo de trabajo de la AEET). El código estará disponible en repositorios abiertos.\n\n\nProyecto financiado por la Asociación Española de Ecología Terrestre (AEET) — Ayudas a Proyectos de Investigación AEET en Ecología 2024."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MorTeDen",
+    "section": "",
+    "text": "MorTeDen\n\n\nEvaluación multiescalar del decaimiento y la MORtalidad en pinares mediterráneos integrando métodos de TEledetección y DENdrocronología"
+  },
+  {
+    "objectID": "index.html#el-proyecto",
+    "href": "index.html#el-proyecto",
+    "title": "MorTeDen",
+    "section": "El proyecto",
+    "text": "El proyecto\nEn las últimas décadas, la frecuencia de los procesos de decaimiento y mortalidad forestal ha aumentado debido al cambio climático. Estos eventos afectan negativamente a los servicios ecosistémicos de los bosques y requieren una gestión forestal urgente para prevenir y mitigar sus efectos. La mortalidad forestal es un proceso complejo y multifactorial, en el que factores bióticos y abióticos interactúan en el espacio y en el tiempo, lo que dificulta su predicción y comprensión.\nMorTeDen combina teledetección por satélite, drones y dendrocronología para analizar el patrón de decaimiento y mortalidad en pinares de repoblación del Parque Natural Sierras de Tejeda, Almijara y Alhama (Andalucía). El fin último es disponer de una herramienta para detectar puntos calientes de decaimiento y comprender mejor los mecanismos que lo provocan, contribuyendo a su gestión y prevención en un contexto de cambio global."
+  },
+  {
+    "objectID": "index.html#objetivos",
+    "href": "index.html#objetivos",
+    "title": "MorTeDen",
+    "section": "Objetivos",
+    "text": "Objetivos\n\n\nO1\nIdentificar mediante teledetección rodales en decaimiento y rodales en estado sanitario óptimo.\n\n\nO2\nAnalizar las características climáticas, topográficas y estructurales que explican la ocurrencia de decaimiento.\n\n\nO3\nComparar productividad primaria (dron) y crecimiento secundario (dendrocronología) entre árboles sanos y enfermos.\n\n\nMás detalle en Proyecto y Metodología. El diseño de muestreo puede explorarse en el mapa de zonas de muestreo, y los avances se irán publicando en Resultados preliminares.\n\n\n\nPinares con síntomas de decaimiento en la zona de estudio.\n\n\n\n\nProyecto financiado por la Asociación Española de Ecología Terrestre (AEET). Convocatoria Ayudas a Proyectos de Investigación AEET en Ecología 2024, modalidad «Ganando independencia»."
+  },
+  {
+    "objectID": "proyecto.html",
+    "href": "proyecto.html",
+    "title": "El proyecto",
+    "section": "",
+    "text": "En las últimas décadas se ha observado una intensificación de los procesos de decaimiento y mortalidad forestal en todo el mundo, forzados por el cambio global1–3. En la Península Ibérica se han registrado episodios de mortalidad asociados principalmente a sequías y veranos calurosos, tanto en bosques de coníferas —especialmente del género Pinus— como de frondosas, incluido el género Quercus4–8. Estos episodios tienen un gran impacto sobre los servicios ecosistémicos que proveen las masas forestales.\nEl cambio climático está exacerbando la intensidad, frecuencia y duración de estos procesos, provocando eventos de mortalidad a gran escala3. Es necesario adaptar la gestión forestal, tanto en los bosques que ya muestran decaimiento9 como en los que aún no lo manifiestan, por ejemplo modificando su estructura o favoreciendo especies más tolerantes a la sequía.\nA pesar de numerosos esfuerzos de investigación, los mecanismos que provocan esta mortalidad acelerada aún no se comprenden completamente10, ya que es un proceso multifactorial en el que intervienen factores bióticos y abióticos interrelacionados11,12. Bajo estrés, los árboles sufren limitaciones en sus dinámicas de carbono y agua que pueden desembocar en fallo hidráulico y déficit de carbono13. Además, es difícil predecir dónde y cuándo se producirán estos procesos14–17: las zonas afectadas presentan patrones espaciales complejos y difusos, condicionados también por el suelo o la microtopografía18.\nPor ello se requieren enfoques multidisciplinares a diferentes y complementarias escalas espacio-temporales19:\n\nLa teledetección permite cuantificar la frecuencia y el alcance de las perturbaciones a distintas escalas20–22 y es esencial para cartografiar el decaimiento a gran escala23–25.\nLos análisis dendroecológicos de crecimiento retrospectivo ofrecen una oportunidad única para detectar el comienzo y desarrollo de los procesos de decaimiento26."
+  },
+  {
+    "objectID": "proyecto.html#justificación",
+    "href": "proyecto.html#justificación",
+    "title": "El proyecto",
+    "section": "",
+    "text": "En las últimas décadas se ha observado una intensificación de los procesos de decaimiento y mortalidad forestal en todo el mundo, forzados por el cambio global1–3. En la Península Ibérica se han registrado episodios de mortalidad asociados principalmente a sequías y veranos calurosos, tanto en bosques de coníferas —especialmente del género Pinus— como de frondosas, incluido el género Quercus4–8. Estos episodios tienen un gran impacto sobre los servicios ecosistémicos que proveen las masas forestales.\nEl cambio climático está exacerbando la intensidad, frecuencia y duración de estos procesos, provocando eventos de mortalidad a gran escala3. Es necesario adaptar la gestión forestal, tanto en los bosques que ya muestran decaimiento9 como en los que aún no lo manifiestan, por ejemplo modificando su estructura o favoreciendo especies más tolerantes a la sequía.\nA pesar de numerosos esfuerzos de investigación, los mecanismos que provocan esta mortalidad acelerada aún no se comprenden completamente10, ya que es un proceso multifactorial en el que intervienen factores bióticos y abióticos interrelacionados11,12. Bajo estrés, los árboles sufren limitaciones en sus dinámicas de carbono y agua que pueden desembocar en fallo hidráulico y déficit de carbono13. Además, es difícil predecir dónde y cuándo se producirán estos procesos14–17: las zonas afectadas presentan patrones espaciales complejos y difusos, condicionados también por el suelo o la microtopografía18.\nPor ello se requieren enfoques multidisciplinares a diferentes y complementarias escalas espacio-temporales19:\n\nLa teledetección permite cuantificar la frecuencia y el alcance de las perturbaciones a distintas escalas20–22 y es esencial para cartografiar el decaimiento a gran escala23–25.\nLos análisis dendroecológicos de crecimiento retrospectivo ofrecen una oportunidad única para detectar el comienzo y desarrollo de los procesos de decaimiento26."
+  },
+  {
+    "objectID": "proyecto.html#hipótesis",
+    "href": "proyecto.html#hipótesis",
+    "title": "El proyecto",
+    "section": "Hipótesis",
+    "text": "Hipótesis\n\nH1\n\nLas imágenes de satélite de resolución moderada son adecuadas para identificar puntos calientes de declive forestal a escala regional.\n\nH2\n\nEn la zona de estudio (repoblaciones de pino, generalmente de alta densidad), las masas con mayor estrés hídrico, estrés biótico y/o alta densidad de pies tienen mayor probabilidad de mostrar tasas de declive elevadas."
+  },
+  {
+    "objectID": "proyecto.html#objetivos",
+    "href": "proyecto.html#objetivos",
+    "title": "El proyecto",
+    "section": "Objetivos",
+    "text": "Objetivos\nEl proyecto persigue un doble fin: (i) desarrollar una herramienta que identifique masas forestales con alta probabilidad de mortalidad a partir de información de satélite, y (ii) analizar los drivers ecológicos que gobiernan la probabilidad de que una masa experimente decaimiento.\n\nO1. Identificación de procesos de mortalidad forestal utilizando teledetección\n¿Podemos identificar rodales forestales en decaimiento utilizando teledetección? Desarrollaremos una herramienta para detectar hotspots de decaimiento en pinares mediterráneos, comparando distintos sensores para optimizar la escala espacio-temporal de las imágenes.\n\n\nO2. Variables explicativas de la ocurrencia de decaimiento\n¿Tienen las áreas en decaimiento identificadas en O1 características topográficas, climáticas o de sitio que determinan esos eventos? ¿Qué factores —y en qué medida— explican los cambios observados en las tendencias de los índices espectrales?\n\n\nO3. Árboles sanos y enfermos: productividad primaria (teledetección de detalle) y crecimiento secundario (dendrocronología)\n¿Existen patrones espaciales de decaimiento identificables con índices espectrales de alta resolución? ¿Difieren las tendencias temporales de crecimiento secundario entre árboles sanos y enfermos? Este objetivo se aborda a escala de árbol en una submuestra de parcelas."
+  },
+  {
+    "objectID": "proyecto.html#especies-objetivo",
+    "href": "proyecto.html#especies-objetivo",
+    "title": "El proyecto",
+    "section": "Especies objetivo",
+    "text": "Especies objetivo\nTrabajamos con pinos que siguen un gradiente decreciente de tolerancia a la sequía y que son representativos de las repoblaciones forestales en la Península Ibérica27: Pinus halepensis Mill., P. pinaster Ait. y P. sylvestris L.\n\n\n\nEspecies de pino a lo largo del gradiente de tolerancia a la sequía (de mayor a menor tolerancia, de izquierda a derecha)."
+  },
+  {
+    "objectID": "proyecto.html#referencias",
+    "href": "proyecto.html#referencias",
+    "title": "El proyecto",
+    "section": "Referencias",
+    "text": "Referencias\n\n\n1. Allen, C. D. et al. A global overview of drought and heat-induced tree mortality reveals emerging climate change risks for forests. Forest Ecology and Management 259, 660-684 (2010).\n\n\n2. Hammond, W. M. et al. Global field observations of tree die-off reveal hotter-drought fingerprint for Earth’s forests. Nature Communications 13, 1761 (2022).\n\n\n3. Hartmann, H. et al. Climate change risks to global forest health: emergence of unexpected events of elevated tree mortality worldwide. Annual Review of Plant Biology 73, 673-702 (2022).\n\n\n4. Gea-Izquierdo, G. et al. Synergistic abiotic and biotic stressors explain widespread decline of Pinus pinaster in a mixed forest. Science of the Total Environment 685, 963-975 (2019).\n\n\n5. Gea-Izquierdo, G., Natalini, F. & Cardillo, E. Holm oak death is accelerated but not sudden and expresses drought legacies. Science of the Total Environment 754, 141793 (2021).\n\n\n6. Gea-Izquierdo, G. et al. Contrasting species decline but high sensitivity to increasing water stress on a mixed pine–oak ecotone. Journal of Ecology 109, 109-124 (2021).\n\n\n7. Martínez-Vilalta, J. & Piñol, J. Drought-induced mortality and hydraulic architecture in pine populations of the NE Iberian Peninsula. Forest Ecology and Management 161, 247-256 (2002).\n\n\n8. Peñuelas, J., Lloret, F. & Montoya, R. Severe drought effects on Mediterranean woody flora in Spain. Forest Science 47, 214-218 (2001).\n\n\n9. Petit-Cailleux, C. et al. Tree mortality risks under climate change in Europe: assessment of silviculture practices and genetic conservation networks. Frontiers in Ecology and Evolution 9, (2021).\n\n\n10. Anderegg, W. R. L. et al. Tree mortality from drought, insects, and their interactions in a changing climate. New Phytologist 208, 674-683 (2015).\n\n\n11. Lloret, F. Vulnerabilidad y resiliencia de ecosistemas forestales frente a episodios extremos de sequía. Ecosistemas 21, 85-90 (2012).\n\n\n12. Menezes-Silva, P. E. et al. Different ways to die in a changing world: consequences of climate change for tree species performance and survival through an ecophysiological perspective. Ecology and Evolution 9, 11979-11999 (2019).\n\n\n13. Choat, B. et al. Triggers of tree mortality under drought. Nature 558, 531-539 (2018).\n\n\n14. Anderegg, W. R. L., Anderegg, L. D. L. & Huang, C. Testing early warning metrics for drought-induced tree physiological stress and mortality. Global Change Biology 25, 2459-2469 (2019).\n\n\n15. Cailleret, M. et al. Early-warning signals of individual tree mortality based on annual radial growth. Frontiers in Plant Science 9, 1964 (2019).\n\n\n16. Camarero, J. J., Gazol, A., Sangüesa-Barreda, G., Oliva, J. & Vicente-Serrano, S. M. To die or not to die: early warnings of tree dieback in response to a severe drought. Journal of Ecology 103, 44-57 (2015).\n\n\n17. Moreno-Fernández, D. et al. Using spectral indices as early warning signals of forest dieback: the case of drought-prone Pinus pinaster forests. Science of the Total Environment 793, 148578 (2021).\n\n\n18. Férriz, M., Martin-Benito, D., Cañellas, I. & Gea-Izquierdo, G. Sensitivity to water stress drives differential decline and mortality dynamics of three co-occurring conifers with different drought tolerance. Forest Ecology and Management 486, 118964 (2021).\n\n\n19. Hartmann, H. et al. Monitoring global tree mortality patterns and trends. Report from the VW symposium «Crossing scales and disciplines to identify global trends of tree mortality as indicators of forest health». New Phytologist 217, 984-987 (2018).\n\n\n20. Buras, A., Rammig, A. & Zang, C. S. The European Forest Condition Monitor: using remotely sensed forest greenness to identify hot spots of forest decline. Frontiers in Plant Science 12, 689220 (2021).\n\n\n21. McDowell, N. G. et al. Global satellite monitoring of climate-induced vegetation disturbances. Trends in Plant Science 20, 114-123 (2015).\n\n\n22. Wulder, M. A., Dymond, C. C., White, J. C., Leckie, D. G. & Carroll, A. L. Surveying mountain pine beetle damage of forests: a review of remote sensing opportunities. Forest Ecology and Management 221, 27-41 (2006).\n\n\n23. Huang, C., Anderegg, W. R. L. & Asner, G. P. Remote sensing of forest die-off in the Anthropocene: from plant ecophysiology to canopy structure. Remote Sensing of Environment 231, 111233 (2019).\n\n\n24. Mantas, V., Fonseca, L., Baltazar, E., Canhoto, J. & Abrantes, I. Detection of tree decline (Pinus pinaster Aiton) in European forests using Sentinel-2 data. Remote Sensing 14, 2028 (2022).\n\n\n25. Navarro, A., Catalao, J. & Calvao, J. Assessing the use of Sentinel-2 time series data for monitoring cork oak decline in Portugal. Remote Sensing 11, 2515 (2019).\n\n\n26. Cailleret, M. et al. A synthesis of radial growth patterns preceding tree mortality. Global Change Biology 23, 1675-1690 (2017).\n\n\n27. Vadell Giral, E., De Miguel Magaña, S. & Pemán García, J. La repoblación forestal en España: las especies utilizadas desde 1877 a partir de las cartografías forestales. Historia Agraria. Revista de Agricultura e Historia Rural 107-136 (2019) doi:10.26882/histagrar.077e05v."
+  }
+]
