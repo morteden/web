@@ -1,0 +1,9 @@
+site,toponimo,main_sp,id_pareja,date,nivel,status,radio_plot,n_trees,latitud,longitud,obs,people
+NERJAH,"El Pinarillo, Nerja",Pinus halepensis,NERJAU,20260202,satélite + dendrocronología,Healthy,16,42,"36,780473","-3,848418","Parcela cerca del camino del Pico del Cielo, subiendo por el camino aparecen unas colmenas, A la derecha de esas colmenas, Suelo con bastantes rocas, conglomerados, Según Pérez-Latorre se encuentra en la unidad biogeográfica Nerjeña, con termomediterráneo inf; y ombrotipo seco inferior",
+NERJAU,"El Pinarillo, Nerja",Pinus halepensis,NERJAH,20260212,satélite + dendrocronología,Decline,10,37,"36,769968","-3,851818",Parcela en el margen derecha subiendo hacia el Pinarillo. Suelo rocoso. Zona muy termófila. ,
+TEJAH,"Fuente de la Teja, Cómpeta",Pinus nigra,,20260222,satélite + dron + dendrocronología,Healthy,12,40,"36,877765","-3,938945",Aterrazada. Nada de sotobosque o muy poco. Algunos regenerados de Q. ilex y de Pinus. ,
+CARNEH,"Collado de los Carneros, Cómpeta",Pinus pinaster,CUPARU,20260330,satélite + dron + dendrocronología,Healthy,9,41,"36,886667","-3,944322","En un collado, expuesta al viento, pero con mucho suelo. Poca vegetación en el suelo.",
+MELEU,"Arroyo Cueva del Melero, Cómpeta",Pinus sylvestris,COMPEH,20260331,satélite + dron + dendrocronología,Decline,10,45,"36,878888","-3,938647","Mucha regeneración de P. pinaster, y algunos silvestris. Mucha procesionaria",
+MELEUB,"Arroyo Cueva del Melero, Cómpeta",Pinus sylvestris,,20260517,satélite + dendrocronología,Decline,15,40,"36,881050","-3,936490",Bastante regeneración,Iván Marbá 
+CUPARU,"Camino Cuesta Parda, Alhama de Granada",Pinus pinaster,CARNEH,20260530,satélite + dron + dendrocronología,Decline,8,35,"36,875684","-3,916162",,
+COMPEH,"Puerto de Cómpeta, Canillas de Albaida",Pinus sylvestris,MELEU,20260530,satélite + dron + dendrocronología,Healthy,9,34,"36,879544","-3,925600",,

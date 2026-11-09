@@ -1,0 +1,167 @@
+---
+title: "Zonas de muestreo"
+subtitle: "Parejas de parcelas *Healthy* / *UNhealthy* por especie"
+---
+
+```{r}
+#| label: setup
+source("R/setup.R")
+library(leaflet)
+
+sitios <- read_csv("data/2026_tree_data_morteden_plot_metadata.csv",
+  col_types = cols(.default = col_character()),
+  locale = locale(encoding = "UTF-8")
+) |>
+  mutate(
+    across(where(is.character), \(x) na_if(trimws(x), "")),
+    latitud = parse_number(latitud, locale = locale(decimal_mark = ",")),
+    longitud = parse_number(longitud, locale = locale(decimal_mark = ",")),
+    fecha = as.Date(date, format = "%Y%m%d"),
+    radio_plot = as.numeric(radio_plot),
+    n_trees = as.integer(n_trees),
+    main_sp = factor(main_sp, levels = intersect(orden_especies, unique(main_sp))),
+    status = factor(status, levels = c("Healthy", "Decline")),
+    # clave de pareja común a ambas parcelas (p. ej. "NERJAH-NERJAU")
+    pareja = ifelse(is.na(id_pareja), NA_character_,
+      paste(pmin(site, id_pareja), pmax(site, id_pareja), sep = "-")
+    ),
+    detalle = grepl("dron", nivel)
+  )
+
+
+```
+
+
+Cada sitio de muestreo es una **pareja de rodales**: uno con decaimiento ([UNhealthy]{.badge-un}, > 75 % de cobertura arbórea y > 50 % de árboles sintomáticos) y otro sin síntomas ([Healthy]{.badge-h}) separado al menos 100 m. En una submuestra de parejas se realizan además vuelos de dron y muestreo dendrocronológico (marcadores de mayor tamaño).
+
+```{r}
+#| label: resumen
+#| results: asis
+cat(sprintf(
+'::: {.stat-row}
+<div class="stat"><div class="n">%d</div><div class="l">parcelas</div></div>
+<div class="stat"><div class="n">%d</div><div class="l">parejas Healthy / Decline</div></div>
+<div class="stat"><div class="n">%d</div><div class="l">especies de pino</div></div>
+<div class="stat"><div class="n">%s</div><div class="l">árboles muestreados</div></div>
+<div class="stat"><div class="n">%d</div><div class="l">parcelas con vuelo de dron</div></div>
+:::
+', nrow(sitios), n_distinct(na.omit(sitios$pareja)), n_distinct(sitios$main_sp),
+   format(sum(sitios$n_trees, na.rm = TRUE), big.mark = "."), sum(sitios$detalle)))
+```
+
+## Mapa
+
+```{r}
+#| label: mapa
+#| column: page-inset-right
+#| fig-height: 6.5
+
+fmt_fecha <- function(x) ifelse(is.na(x), "—", format(x, "%d/%m/%Y"))
+
+sitios <- sitios |>
+  mutate(popup = paste0(
+    "<b>", site, "</b> · ", toponimo, "<br>",
+    "<i>", main_sp, "</i><br>",
+    "Estado: <b style='color:", col_estado[as.character(status)], "'>", status, "</b>",
+    ifelse(is.na(id_pareja), "", paste0(" · pareja: ", id_pareja)), "<br>",
+    "Muestreo: ", fmt_fecha(fecha), "<br>",
+    "Parcela: r = ", radio_plot, " m · ", n_trees, " árboles<br>",
+    "Nivel: ", nivel
+    # ifelse(is.na(obs), "",
+    #        paste0("<hr style='margin:4px 0'><span style='font-size:.85em'>", obs, "</span>"))
+  ))
+
+# En el mapa el estado se codifica con el borde: blanco (Healthy) / negro (Decline),
+# para que contraste con el relleno de especie y con la ortofoto
+borde_estado <- c("Healthy" = "#FFFFFF", "Decline" = "#1A1A1A")
+
+# Líneas que unen cada pareja Healthy–Decline
+parejas <- sitios |>
+  filter(!is.na(pareja)) |>
+  group_by(pareja) |>
+  filter(n() == 2) |>
+  summarise(main_sp = first(main_sp), lng = list(longitud), lat = list(latitud),
+            .groups = "drop")
+
+m <- leaflet(options = leafletOptions(minZoom = 8)) |>
+  addProviderTiles(providers$Esri.WorldImagery, group = "Satélite (Esri)") |>
+  addWMSTiles(
+    "https://www.ign.es/wms-inspire/pnoa-ma",
+    layers = "OI.OrthoimageCoverage", group = "Ortofoto PNOA (IGN)",
+    options = WMSTileOptions(format = "image/jpeg", transparent = FALSE),
+    attribution = "PNOA © Instituto Geográfico Nacional"
+  ) |>
+  addProviderTiles(providers$OpenTopoMap, group = "Topográfico") |>
+  addProviderTiles(providers$CartoDB.Positron, group = "Claro")
+
+# Límite del área de estudio (opcional): data/area_estudio.geojson
+if (file.exists("data/area_estudio.geojson")) {
+  m <- m |> addGeoJSON(
+    paste(readLines("data/area_estudio.geojson", warn = FALSE), collapse = "\n"),
+    color = mtd_col[["verde"]], weight = 2, fill = FALSE, group = "Área de estudio"
+  )
+}
+
+for (i in seq_len(nrow(parejas))) {
+  m <- m |> addPolylines(
+    lng = parejas$lng[[i]], lat = parejas$lat[[i]],
+    color = "white", weight = 2, opacity = 0.9, dashArray = "5 5",
+    group = as.character(parejas$main_sp[i])
+  )
+}
+
+for (sp in levels(sitios$main_sp)) {
+  d <- filter(sitios, main_sp == sp)
+  m <- m |> addCircleMarkers(
+    data = d, lng = ~longitud, lat = ~latitud,
+    radius = ~ifelse(detalle, 10, 7),
+    fillColor = col_especie[[sp]], fillOpacity = 0.95,
+    color = ~unname(borde_estado[as.character(status)]), weight = 3, opacity = 1,
+    popup = ~popup, label = ~paste(site, "·", toponimo), group = sp
+  )
+}
+
+grupos_extra <- if (file.exists("data/area_estudio.geojson")) "Área de estudio" else character(0)
+
+m |>
+  addLegend(
+    position = "bottomright", title = "Especie",
+    colors = unname(col_especie[levels(sitios$main_sp)]),
+    labels = paste0("<em>", levels(sitios$main_sp), "</em>"), opacity = 1
+  ) |>
+  addLegend(
+    position = "bottomright", title = "Estado (borde)",
+    colors = unname(borde_estado), labels = names(borde_estado), opacity = 1
+  ) |>
+  addLayersControl(
+    baseGroups = c("Satélite (Esri)", "Ortofoto PNOA (IGN)", "Topográfico", "Claro"),
+    overlayGroups = c(levels(sitios$main_sp), grupos_extra),
+    options = layersControlOptions(collapsed = TRUE)
+  ) |>
+  addScaleBar(position = "bottomleft", options = scaleBarOptions(imperial = FALSE)) |>
+  addMiniMap(toggleDisplay = TRUE, minimized = TRUE, position = "topright") |>
+  fitBounds(
+    min(sitios$longitud), min(sitios$latitud),
+    max(sitios$longitud), max(sitios$latitud),
+    options = list(padding = c(30, 30))
+  )
+```
+
+## Listado de parcelas
+
+```{r}
+#| label: tabla
+#| column: page-inset-right
+sitios |>
+  arrange(main_sp, pareja, status) |>
+  transmute(site, toponimo, main_sp, status, id_pareja,
+            fecha = fmt_fecha(fecha), nivel, radio_plot, n_trees) |>
+  DT::datatable(
+    rownames = FALSE, filter = "top",
+    colnames = c("Parcela", "Topónimo", "Especie", "Estado", "Pareja",
+                 "Fecha", "Nivel", "Radio (m)", "Nº árboles"),
+    options = list(pageLength = 10, scrollX = TRUE, language = list(
+      url = "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"))
+  )
+```
+

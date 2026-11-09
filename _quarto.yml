@@ -1,0 +1,67 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "*.qmd"
+    - "!metodologia.qmd"
+  resources:
+    - data/*.csv
+    - data/*.geojson
+
+lang: es
+
+website:
+  title: "MorTeDen"
+  description: "Evaluación multiescalar del decaimiento y la mortalidad en pinares mediterráneos integrando teledetección y dendrocronología"
+  favicon: images/logo.png
+  page-navigation: true
+  back-to-top-navigation: true
+  navbar:
+    logo: images/logo_circulo.png
+    title: "MorTeDen"
+    left:
+      - href: index.qmd
+        text: Inicio
+      - href: proyecto.qmd
+        text: Proyecto
+      # - href: metodologia.qmd
+      #   text: Metodología
+      - href: muestreo.qmd
+        text: Zonas de muestreo
+      - href: resultados.qmd
+        text: Resultados preliminares
+      - href: equipo.qmd
+        text: Equipo
+    right:
+      - icon: github
+        href: https://github.com/ajpelu
+        aria-label: GitHub
+  page-footer:
+    left: |
+      **MorTeDen** · Proyecto financiado por la [Asociación Española de Ecología Terrestre](https://www.aeet.org) — Ayudas a Proyectos de Investigación AEET en Ecología 2024
+    right: |
+      Antonio J. Pérez-Luque · ICIFOR (INIA-CSIC)
+
+format:
+  html:
+    theme:
+      light: [cosmo, styles/custom.scss]
+    toc: true
+    toc-title: "En esta página"
+    toc-location: right
+    smooth-scroll: true
+    link-external-newwindow: true
+    fig-cap-location: bottom
+    lightbox: auto
+    grid:
+      body-width: 900px
+
+bibliography: references.bib
+csl: styles/nature.csl
+reference-location: document
+
+execute:
+  echo: false
+  warning: false
+  message: false
+  freeze: auto

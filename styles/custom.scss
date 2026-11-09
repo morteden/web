@@ -1,0 +1,151 @@
+/*-- scss:defaults --*/
+
+// Paleta de la presentación MorTeDen
+$mtd-verde:      #16342E;  // "Mor"  – mortalidad
+$mtd-gris:       #999999;  // "Te"   – teledetección
+$mtd-marron:     #89694B;  // "Den"  – dendrocronología
+$mtd-healthy:    #006300;
+$mtd-unhealthy:  #B8920F;
+$sp-halepensis:  #C1666B;
+$sp-pinaster:    #ECB42E;
+$sp-nigra:       #4CBF8B;
+$sp-sylvestris:  #006494;
+
+$primary:   $mtd-verde;
+$secondary: $mtd-marron;
+$success:   $mtd-healthy;
+$warning:   $sp-pinaster;
+$info:      $sp-sylvestris;
+$link-color: $mtd-marron;
+$body-color: #2b2b2b;
+
+$web-font-path: "https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Josefin+Sans:wght@300;400;600&display=swap";
+$font-family-sans-serif: "Roboto", "Helvetica Neue", Arial, sans-serif;
+$headings-font-family: "Josefin Sans", "Roboto", sans-serif;
+$headings-font-weight: 400;
+$headings-color: $mtd-verde;
+
+$navbar-bg: #ffffff;
+$navbar-fg: $mtd-verde;
+$navbar-hl: $mtd-marron;
+$footer-bg: #f6f4f1;
+$footer-fg: #555555;
+
+/*-- scss:rules --*/
+
+.navbar { border-bottom: 1px solid #e6e1da; }
+.navbar-logo { max-height: 46px; }
+
+h2 {
+  border-bottom: none;
+  margin-top: 2.2rem;
+  padding-bottom: .2rem;
+  &::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 3px;
+    margin-top: .35rem;
+    background: linear-gradient(90deg, $mtd-verde 0 33%, $mtd-gris 33% 66%, $mtd-marron 66% 100%);
+  }
+}
+
+// Logotipo textual Mor·Te·Den
+.mtd { font-family: $headings-font-family; font-weight: 400; letter-spacing: .02em; white-space: nowrap; }
+.mtd .m { color: $mtd-verde; }
+.mtd .t { color: $mtd-gris; }
+.mtd .d { color: $mtd-marron; }
+
+// Resaltados como en las diapositivas
+.hl-mort, .hl-tele, .hl-dendro {
+  color: #fff; padding: 0 .3em; border-radius: 2px;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone;
+}
+.hl-mort   { background: $mtd-verde; }
+.hl-tele   { background: $mtd-gris; }
+.hl-dendro { background: $mtd-marron; }
+.c-tele    { color: $mtd-gris; }
+.c-dendro  { color: $mtd-marron; }
+
+// Portada
+.hero {
+  display: grid;
+  grid-template-columns: 210px 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 1rem 0 2.5rem;
+  img { width: 100%; height: auto; }
+  .hero-title { font-size: 4rem; line-height: 1; margin: 0 0 .6rem; }
+  .hero-sub   { font-size: 1.3rem; font-weight: 300; line-height: 1.4; color: #333; }
+  .hero-sub b { font-weight: 500; }
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+    img { max-width: 160px; margin: 0 auto; }
+    .hero-title { font-size: 3rem; text-align: center; }
+  }
+}
+
+.lead-box {
+  font-size: 1.2rem; line-height: 1.9; font-weight: 300;
+  border-left: 4px solid $mtd-verde;
+  padding: .4rem 0 .4rem 1.2rem;
+  margin: 1.5rem 0;
+}
+
+// Tarjetas de objetivos
+.obj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin: 1.2rem 0 2rem;
+}
+.obj-card {
+  border: 1px solid #e6e1da;
+  border-top: 4px solid $mtd-verde;
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  .obj-tag { font-family: $headings-font-family; font-size: 1.6rem; color: $mtd-verde; }
+  p { margin: .3rem 0 0; font-size: .95rem; }
+  &.o2 { border-top-color: $mtd-gris; .obj-tag { color: $mtd-gris; } }
+  &.o3 { border-top-color: $mtd-marron; .obj-tag { color: $mtd-marron; } }
+}
+
+// Etiquetas de tarea (T1.1, T1.2…) como en las diapositivas
+.task {
+  display: inline-block;
+  background: $mtd-gris; color: #fff;
+  font-size: .8em; font-weight: 500;
+  padding: .05em .45em; margin-right: .4em; border-radius: 2px;
+  vertical-align: .1em;
+}
+
+.badge-h  { background: $mtd-healthy;   color: #fff; padding: .1em .45em; border-radius: 2px; font-size: .85em; }
+.badge-un { background: $mtd-unhealthy; color: #fff; padding: .1em .45em; border-radius: 2px; font-size: .85em; }
+
+.sp { font-style: italic; font-weight: 500; }
+.sp-hal { color: $sp-halepensis; }
+.sp-pin { color: darken($sp-pinaster, 12%); }
+.sp-syl { color: $sp-sylvestris; }
+.sp-nig { color: darken($sp-nigra, 10%); }
+
+.stat-row {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem; margin: 1rem 0 1.5rem;
+}
+.stat {
+  border: 1px solid #e6e1da; border-radius: 6px; padding: .8rem 1rem;
+  .n { font-family: $headings-font-family; font-size: 2.2rem; color: $mtd-verde; line-height: 1.1; }
+  .l { font-size: .85rem; color: #666; }
+}
+
+.funding {
+  display: flex; align-items: center; gap: 1.2rem;
+  border-top: 1px solid #e6e1da; padding-top: 1.2rem; margin-top: 2.5rem;
+  font-size: .9rem; color: #555;
+  img { width: 170px; height: auto; }
+}
+
+.leaflet-container { border-radius: 6px; border: 1px solid #e6e1da; }
+.leaflet .legend { white-space: nowrap; line-height: 20px; }
+.leaflet .legend i { border: 1px solid #999; }
