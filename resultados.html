@@ -147,14 +147,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#o1.-identificación-de-decaimiento-mediante-teledetección" id="toc-o1.-identificación-de-decaimiento-mediante-teledetección" class="nav-link" data-scroll-target="#o1.-identificación-de-decaimiento-mediante-teledetección">O1. Identificación de decaimiento mediante teledetección</a>
   <ul class="collapse">
   <li><a href="#series-temporales-de-índices-espectrales" id="toc-series-temporales-de-índices-espectrales" class="nav-link" data-scroll-target="#series-temporales-de-índices-espectrales">Series temporales de índices espectrales</a></li>
-  <li><a href="#hacia-los-mapas-de-probabilidad-de-decaimiento" id="toc-hacia-los-mapas-de-probabilidad-de-decaimiento" class="nav-link" data-scroll-target="#hacia-los-mapas-de-probabilidad-de-decaimiento">Hacia los mapas de probabilidad de decaimiento</a></li>
   </ul></li>
-  <li><a href="#o3.-árboles-sanos-y-enfermos-a-escala-de-árbol" id="toc-o3.-árboles-sanos-y-enfermos-a-escala-de-árbol" class="nav-link" data-scroll-target="#o3.-árboles-sanos-y-enfermos-a-escala-de-árbol">O3. Árboles sanos y enfermos a escala de árbol</a>
+  <li><a href="#o2.-árboles-sanos-y-enfermos-a-escala-de-árbol" id="toc-o2.-árboles-sanos-y-enfermos-a-escala-de-árbol" class="nav-link" data-scroll-target="#o2.-árboles-sanos-y-enfermos-a-escala-de-árbol">O2. Árboles sanos y enfermos a escala de árbol</a>
   <ul class="collapse">
   <li><a href="#caracterización-con-dron" id="toc-caracterización-con-dron" class="nav-link" data-scroll-target="#caracterización-con-dron">Caracterización con dron</a></li>
   <li><a href="#crecimiento-radial-dendrocronología" id="toc-crecimiento-radial-dendrocronología" class="nav-link" data-scroll-target="#crecimiento-radial-dendrocronología">Crecimiento radial (dendrocronología)</a></li>
   </ul></li>
-  <li><a href="#formato-de-los-datos" id="toc-formato-de-los-datos" class="nav-link" data-scroll-target="#formato-de-los-datos">Formato de los datos</a></li>
   </ul>
 </nav>
     </div>
@@ -175,7 +173,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 de noviembre de 2026</p>
+      <p class="date">12 de noviembre de 2026</p>
     </div>
   </div>
   
@@ -260,32 +258,32 @@ ul.task-list li input[type="checkbox"] {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-body-container">
-<p>Las series temporales (NDVI, NBR, CI) de parcelas <em>Healthy</em> y <em>UNhealthy</em> se mostrarán aquí cuando <code>data/series_indices.csv</code> esté disponible.</p>
+<p>Las series temporales (NDVI, NBR, CI) de parcelas <em>Healthy</em> y <em>UNhealthy</em> se mostrarán aquí a mdedida que estén disponibles</p>
 </div>
 </div>
 </div>
-</section>
-<section id="hacia-los-mapas-de-probabilidad-de-decaimiento" class="level3">
-<h3 class="anchored" data-anchor-id="hacia-los-mapas-de-probabilidad-de-decaimiento">Hacia los mapas de probabilidad de decaimiento</h3>
-<div class="columns">
-<div class="column" style="width:62%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><a href="images/mapa_probabilidad.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Ejemplo del producto previsto: mapa de probabilidad de decaimiento a partir de umbrales de índices espectrales (p.&nbsp;ej. Spectral index < 0.16 ∩ VImean < 0.2)."><img src="images/mapa_probabilidad.jpg" class="img-fluid figure-img" alt="Mapa con probabilidades de decaimiento en tonos verde-azul-amarillo"></a></p>
-<figcaption>Ejemplo del producto previsto: mapa de probabilidad de decaimiento a partir de umbrales de índices espectrales (p.&nbsp;ej. <em>Spectral index</em> &lt; 0.16 ∩ VI<sub>mean</sub> &lt; 0.2).</figcaption>
-</figure>
-</div>
-</div><div class="column" style="width:6%;">
+<!--
+### Hacia los mapas de probabilidad de decaimiento
 
-</div><div class="column" style="width:32%;">
-<p>Los umbrales que mejor discriminen entre parcelas sanas y enfermas se combinarán para generar mapas de probabilidad y una <strong>aplicación en Google Earth Engine</strong> para identificar <em>hotspots</em> de decaimiento.</p>
-<p><a href="images/gee.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="images/gee.png" class="img-fluid" alt="Icono de Google Earth Engine" width="110"></a></p>
-</div>
-</div>
+::: {.columns}
+::: {.column width="62%"}
+![Ejemplo del producto previsto: mapa de probabilidad de decaimiento a partir de umbrales de índices espectrales (p. ej. *Spectral index* < 0.16 ∩ VI~mean~ < 0.2).](images/mapa_probabilidad.jpg){fig-alt="Mapa con probabilidades de decaimiento en tonos verde-azul-amarillo"}
+:::
+
+::: {.column width="6%"}
+:::
+
+::: {.column width="32%"}
+Los umbrales que mejor discriminen entre parcelas sanas y enfermas se combinarán para generar mapas de probabilidad y una **aplicación en Google Earth Engine** para identificar *hotspots* de decaimiento.
+
+![](images/gee.png){width="110px" fig-alt="Icono de Google Earth Engine"}
+:::
+:::
+-->
 </section>
 </section>
-<section id="o3.-árboles-sanos-y-enfermos-a-escala-de-árbol" class="level2">
-<h2 class="anchored" data-anchor-id="o3.-árboles-sanos-y-enfermos-a-escala-de-árbol">O3. Árboles sanos y enfermos a escala de árbol</h2>
+<section id="o2.-árboles-sanos-y-enfermos-a-escala-de-árbol" class="level2">
+<h2 class="anchored" data-anchor-id="o2.-árboles-sanos-y-enfermos-a-escala-de-árbol">O2. Árboles sanos y enfermos a escala de árbol</h2>
 <section id="caracterización-con-dron" class="level3">
 <h3 class="anchored" data-anchor-id="caracterización-con-dron">Caracterización con dron</h3>
 <div class="quarto-layout-panel" data-layout-ncol="2">
@@ -293,7 +291,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/dron_falsocolor.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Ortoimagen de falso color."><img src="images/dron_falsocolor.jpg" class="img-fluid figure-img" alt="Ortoimagen de dron en falso color con árboles enfermos y muertos señalados"></a></p>
+<p><a href="images/dron_falsocolor.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Ortoimagen de falso color."><img src="images/dron_falsocolor.jpg" class="img-fluid figure-img" alt="Ortoimagen de dron en falso color con árboles enfermos y muertos señalados"></a></p>
 <figcaption>Ortoimagen de falso color.</figcaption>
 </figure>
 </div>
@@ -301,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/dron_ndvi.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Ortoimagen NDVI."><img src="images/dron_ndvi.jpg" class="img-fluid figure-img" alt="Ortoimagen NDVI de dron con árboles enfermos y muertos señalados"></a></p>
+<p><a href="images/dron_ndvi.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Ortoimagen NDVI."><img src="images/dron_ndvi.jpg" class="img-fluid figure-img" alt="Ortoimagen NDVI de dron con árboles enfermos y muertos señalados"></a></p>
 <figcaption>Ortoimagen NDVI.</figcaption>
 </figure>
 </div>
@@ -322,40 +320,24 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="formato-de-los-datos" class="level2">
-<h2 class="anchored" data-anchor-id="formato-de-los-datos">Formato de los datos</h2>
-<p>Para que esta página se actualice automáticamente basta con añadir los ficheros a la carpeta <code>data/</code> y volver a renderizar:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 30%">
-<col style="width: 70%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Fichero</th>
-<th>Columnas</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>estado_tareas.csv</code></td>
-<td><code>tarea</code>, <code>descripcion</code>, <code>estado</code> (Completada / En curso / Pendiente)</td>
-</tr>
-<tr class="even">
-<td><code>series_indices.csv</code></td>
-<td><code>id_sitio</code>, <code>fecha</code> (AAAA-MM-DD), <code>indice</code> (NDVI, NBR, CI…), <code>valor</code></td>
-</tr>
-<tr class="odd">
-<td><code>crecimiento_anillos.csv</code></td>
-<td><code>id_sitio</code>, <code>id_arbol</code>, <code>year</code>, <code>rw</code> (mm)</td>
-</tr>
-</tbody>
-</table>
-<p><code>id_sitio</code> debe coincidir con el de <a href="./muestreo.html"><code>sitios_muestreo.csv</code></a>.</p>
+<!--
+## Formato de los datos
+
+Para que esta página se actualice automáticamente basta con añadir los ficheros a la carpeta `data/` y volver a renderizar:
+
+| Fichero | Columnas |
+|---|---|
+| `estado_tareas.csv` | `tarea`, `descripcion`, `estado` (Completada / En curso / Pendiente) |
+| `series_indices.csv` | `id_sitio`, `fecha` (AAAA-MM-DD), `indice` (NDVI, NBR, CI…), `valor` |
+| `crecimiento_anillos.csv` | `id_sitio`, `id_arbol`, `year`, `rw` (mm) |
+
+: {tbl-colwidths="[30,70]"}
+
+`id_sitio` debe coincidir con el de [`sitios_muestreo.csv`](muestreo.qmd).
+-->
 
 
+</section>
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Volver arriba</a></main> <!-- /main -->
